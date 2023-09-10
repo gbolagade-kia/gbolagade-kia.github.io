@@ -78,7 +78,7 @@
             <img data-testid="slackDisplayImage" id="pic2" src="Kamal2.jfif" height="100px" width="100px" alt="KamalintgiA">
             <div class="date">
                <h2 data-testid="currentDayOfTheWeek" id="day-id"></h2>
-               <h2>, &nbsp;</h2>
+               <h2>,</h2>
                <h2 data-testid="currentUTCTime" id="time-id">,ss</h2>
              </div>
             <h1 data-testid="slackUserName" style="color: black; padding-top: 10px;">KamalintgiA</h1>
@@ -104,20 +104,21 @@
         let hr = today.getUTCHours();
         let min = today.getUTCMinutes();
         let sec = today.getUTCSeconds();
+        let current - today.getUTCMilliseconds();
         let dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let currentDay = dayList[day];
         let kam = document.getElementById("day-id");
         let kamal = document.getElementById("time-id");
         
         kam.innerHTML =  currentDay;
-        kamal.innerHTML = hr +":" + min + ":"+ sec;
+        kamal.innerHTML = hr +":" + min + ":"+ sec + current;
         if(hr > 12){
             hr = hr - 12;
-            kamal.innerHTML = hr +":" + min + ":"+ sec;
+            kamal.innerHTML = hr +":" + min + ":"+ sec + current;
             kamal.innerHTML += "PM";
         }
         else{
-            kamal.innerHTML = hr +":" + min + ":"+ sec;
+            kamal.innerHTML = hr +":" + min + ":"+ sec + current;
             kamal.innerHTML += "AM";
         }
         console.log(currentDay)
