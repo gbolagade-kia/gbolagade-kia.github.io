@@ -79,7 +79,7 @@
             <div class="date">
                <h2 data-testid="currentDayOfTheWeek" id="day-id"></h2>
                <h2>,</h2>
-               <h2 data-testid="currentUTCTime" id="time-id">,ss</h2>
+               <h2 data-testid="currentUTCTime" id="time-id">,</h2>
              </div>
             <h1 data-testid="slackUserName" style="color: black; padding-top: 10px;">KamalintgiA</h1>
             <h2>About Me</h2>
@@ -111,14 +111,14 @@
         let kamal = document.getElementById("time-id");
         
         kam.innerHTML =  currentDay;
-        kamal.innerHTML = hr +":" + min + ":"+ sec + current;
+        kamal.innerHTML = hr +":" + min + ":"+ sec + ":"+ current;
         if(hr > 12){
             hr = hr - 12;
-            kamal.innerHTML = hr +":" + min + ":"+ sec + current;
+            kamal.innerHTML = hr +":" + min + ":"+ sec + ":"+ current;
             kamal.innerHTML += "PM";
         }
         else{
-            kamal.innerHTML = hr +":" + min + ":"+ sec + current;
+            kamal.innerHTML = hr +":" + min + ":"+ sec  + ":"+ current;
             kamal.innerHTML += "AM";
         }
         console.log(currentDay)
