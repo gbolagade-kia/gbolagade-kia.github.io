@@ -62,6 +62,7 @@
           display: flex;
           margin-left: 3px;
           margin-top: -100px;
+          font-size: 12px;
         }
     </style>
 </head>
@@ -77,11 +78,11 @@
         <div class="child" id="second-div">
             <img data-testid="slackDisplayImage" id="pic2" src="Kamal2.jfif" height="100px" width="100px" alt="KamalintgiA">
             <div class="date">
-               <h2 data-testid="currentDayOfTheWeek" id="day-id"></h2>
-               <h2>,<br></h2>
-               <h2 data-testid="currentUTCTime" id="time-id">,</h2>
+               <h2 data-testid="currentDayOfTheName" id="day-id"></h2><br>
+               <h2>,</h2>
+               <h2 data-testid="currentUTCTime" id="time-id"></h2>
              </div>
-            <h1 data-testid="slackUserName" style="color: black; padding-top: 10px;">KamalintgiA</h1>
+            <h1 data-testid="slackUserName" style="color: black; padding-top: 30px;">KamalintgiA</h1>
             <h2>About Me</h2>
             <p id="about-p">I am a Frontend Web developer. I am probably the most passionate programmer you will ever get to work with. If you have a great project that require amazing skills. I am  your guy</p>
             <h2><u>Details</u></h2>
@@ -95,33 +96,52 @@
             </h3>
             <h3>Email : <br> <span>gbolagadekamaldeen@gmail.com</span>     
             </h3>
-            <a data-testid="githubURL" href="https://github.com/gbolagade-kia/gbolagade-kia.github.io.git">Github Link</a>
+            <a data-testid="githubURL" href="https://github.com/gbolagade-kia/KamalintgiA-.git">Github Link</a>
         </div>
     </div>
     <script>
         let today = new Date();
         let day = today.getDay();
-        let hr = today.getUTCHours();
-        let min = today.getUTCMinutes();
-        let sec = today.getUTCSeconds();
-        let current = today.getUTCMilliseconds();
         let dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let currentDay = dayList[day];
         let kam = document.getElementById("day-id");
         let kamal = document.getElementById("time-id");
-        
-        kam.innerHTML =  currentDay;
-        kamal.innerHTML = hr +":" + min + ":"+ sec + ":"+ current;
-        if(hr > 12){
+        kam.innerHTML =`${currentDay}`
+       function time() {
+            let now = new Date();
+            let hr = now.getUTCHours().toString().padStart(2, '0');
+            let min = now.getUTCMinutes().toString().padStart(2, '0');
+            let sec = now.getUTCSeconds().toString().padStart(2, '0');
+            let current = now.getUTCMilliseconds().toString().padStart(2, '0');
+            let timeString = `${hr}:${min}:${sec}:${current}`;
+            kamal.textContent = timeString;
+            if(hr > 12){
             hr = hr - 12;
-            kamal.innerHTML = hr +":" + min + ":"+ sec + ":"+ current;
+            kamal.innerHTML = hr +":" + min + ":"+ sec + ":" + current;
             kamal.innerHTML += "PM";
         }
         else{
-            kamal.innerHTML = hr +":" + min + ":"+ sec  + ":"+ current;
+            kamal.innerHTML = hr +":" + min + ":"+ sec + ":" + current;
             kamal.innerHTML += "AM";
         }
-        console.log(currentDay)
+        if(hr < 10){
+            kamal.innerHTML = "0" + hr +":" + min + ":"+ sec + ":" + current;
+            kamal.innerHTML += "PM";
+        }
+        else{
+            kamal.innerHTML = hr +":" + min + ":"+ sec + ":" + current;
+            kamal.innerHTML += "AM";
+        }
+        }
+        time();
+        setInterval(time, 1);
+        
+
+        // console.log(currentDay)
+        // const current = Date.now();
+        // console.log(curre);
+
+
         
     </script>
 </body>
